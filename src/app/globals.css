@@ -1,0 +1,194 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .bg-radial-gradient {
+    background: radial-gradient(circle at center, transparent 0%, rgba(0, 0, 0, 0.5) 100%);
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@keyframes revealHeading {
+  0% {
+    opacity: 0;
+    filter: blur(8px) brightness(0.5);
+    clip-path: inset(0 100% 0 0);
+  }
+  20% {
+    opacity: 0.2;
+    filter: blur(6px) brightness(0.6);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0) brightness(1);
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+.animate-reveal-heading {
+  animation: revealHeading 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  opacity: 0;
+  will-change: filter, opacity, clip-path;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
+
+@keyframes revealText {
+  0% {
+    opacity: 0;
+    filter: blur(8px);
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+  }
+}
+
+.animate-reveal-text {
+  animation: revealText 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  opacity: 0;
+  will-change: transform, opacity, filter;
+}
+
+.animate-reveal-text:nth-child(1) { animation-delay: 0.1s; }
+.animate-reveal-text:nth-child(2) { animation-delay: 0.3s; }
+.animate-reveal-text:nth-child(3) { animation-delay: 0.5s; }
+.animate-reveal-text:nth-child(4) { animation-delay: 0.7s; }
+.animate-reveal-text:nth-child(5) { animation-delay: 0.9s; }
+
+@keyframes scratch {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+.animate-scratch {
+  animation: scratch 8s linear infinite;
+}
+
+/* Film grain texture */
+.grain {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 100;
+  opacity: 0.15;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Film scratches texture */
+.scratches {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 100;
+  opacity: 0.03;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.95' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+:root {
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 15, 15, 15;
+  --background-end-rgb: 15, 15, 15;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+}
+
+@layer components {
+  .nav-link {
+    @apply text-gray-300 hover:text-white transition-colors duration-200;
+  }
+
+  .hero-text {
+    @apply text-4xl md:text-6xl font-bold tracking-tight;
+  }
+
+  .section-title {
+    @apply text-2xl md:text-3xl font-semibold mb-6;
+  }
+}
+
+@keyframes revealShowreel {
+  0% {
+    opacity: 0;
+    filter: blur(12px);
+    transform: scale(0.9) translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0);
+    transform: scale(1) translateY(0);
+  }
+}
+
+.animate-showreel {
+  animation: revealShowreel 1.2s cubic-bezier(0.5, 1, 0.91, 1) forwards;
+  will-change: transform, opacity, filter;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
+
+.showreel-hidden {
+  opacity: 0;
+  filter: blur(12px);
+  transform: scale(0.9) translateY(20px);
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-rotate {
+  animation: rotate 12s linear infinite;
+}
+
+@keyframes ping {
+  75%, 100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+.animate-ping {
+  animation: ping 1.5s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+@keyframes pulse {
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
