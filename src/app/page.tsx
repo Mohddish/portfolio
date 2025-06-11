@@ -63,17 +63,17 @@ export default function Home() {
       id: 1,
       title: "Bitter sweet",
       description: "Cinematic creation",
-      videoUrl: "/videos/project1.mp4",
+      videoUrl: "https://www.youtube.com/embed/5MEix08g15U",
       thumbnail: "/thumbnails/project1-thumb.png",
       category: "cinematography",
       aspectRatio: "16:9",
-      externalLink: "https://www.instagram.com/p/DAMCNCjSjG5/"
+      externalLink: "https://youtu.be/5MEix08g15U"
     },
     {
       id: 2,
       title: "Why do we create?",
       description: "5 awards winning short film",
-      videoUrl: "/videos/project2.mp4",
+      videoUrl: "https://www.youtube.com/embed/4XjXxwjWQWA",
       thumbnail: "/thumbnails/project2-thumb.jpg",
       category: "directing",
       aspectRatio: "16:9",
@@ -83,37 +83,37 @@ export default function Home() {
       id: 3,
       title: "What a difference a day makes",
       description: "Summer short film",
-      videoUrl: "/videos/project3.mp4",
+      videoUrl: "https://www.youtube.com/embed/CW7KJXNwI0Q",
       thumbnail: "/thumbnails/project3-thumb.png",
       category: "editing",
       aspectRatio: "16:9",
-      externalLink: "https://www.instagram.com/p/Cu4t-88NK7C/"
+      externalLink: "https://youtu.be/CW7KJXNwI0Q"
     },
     {
       id: 4,
       title: "Don't just consume, create!",
       description: "A film about the power of creation",
-      videoUrl: "/videos/project4.mp4",
+      videoUrl: "https://www.youtube.com/embed/4I37llSf1HY",
       thumbnail: "/thumbnails/project4-thumb.png",
       category: "cinematography",
       aspectRatio: "16:9",
-      externalLink: "https://www.instagram.com/p/DBUQCXFBPHv/"
+      externalLink: "https://youtu.be/4I37llSf1HY"
     },
     {
       id: 5,
       title: "Nothing",
       description: "First film I made with my camera",
-      videoUrl: "/videos/project5.mp4",
+      videoUrl: "https://www.youtube.com/embed/JNV7zMPrdLQ",
       thumbnail: "/thumbnails/project5-thumb.png",
       category: "directing",
       aspectRatio: "16:9",
-      externalLink: "https://www.instagram.com/p/C_ArIwOvBYE/"
+      externalLink: "https://youtu.be/JNV7zMPrdLQ"
     },
     {
       id: 6,
       title: "Endless void of consumption",
       description: "3 awards winning short film",
-      videoUrl: "/videos/project6.mp4",
+      videoUrl: "https://www.youtube.com/embed/LG68gvAHPIU",
       thumbnail: "/thumbnails/project6-thumb.png",
       category: "editing",
       aspectRatio: "16:9",
@@ -143,11 +143,11 @@ export default function Home() {
       id: 9,
       title: "Essentialist",
       description: "",
-      videoUrl: "/videos/social3.mp4",
+      videoUrl: "https://www.youtube.com/embed/yihzD2UKNnA",
       thumbnail: "/thumbnails/social3-thumb.png",
       category: "social",
       aspectRatio: "9:16",
-      externalLink: "https://www.instagram.com/p/DH0XOUEyJe7/"
+      externalLink: "https://youtube.com/shorts/yihzD2UKNnA"
     },
     {
       id: 10,
@@ -381,18 +381,9 @@ export default function Home() {
                       className="group relative aspect-video overflow-hidden rounded-lg bg-black/50"
                       onMouseEnter={() => {
                         setHoveredProject(project.id);
-                        const video = document.getElementById(`video-${project.id}`) as HTMLVideoElement;
-                        if (video) {
-                          video.play();
-                        }
                       }}
                       onMouseLeave={() => {
                         setHoveredProject(null);
-                        const video = document.getElementById(`video-${project.id}`) as HTMLVideoElement;
-                        if (video) {
-                          video.pause();
-                          video.currentTime = 0;
-                        }
                       }}
                       onClick={() => {
                         if (project.externalLink) {
@@ -410,16 +401,27 @@ export default function Home() {
                       />
                       
                       {/* Video - Only plays on hover */}
-                      <video
-                        id={`video-${project.id}`}
-                        className="absolute inset-0 w-full h-full object-cover transition-opacity duration-300"
-                        style={{ opacity: hoveredProject === project.id ? 1 : 0 }}
-                        muted
-                        loop
-                        playsInline
-                      >
-                        <source src={project.videoUrl} type="video/mp4" />
-                      </video>
+                      {project.videoUrl.startsWith('https://www.youtube.com/embed/') ? (
+                        <iframe
+                          id={`video-${project.id}`}
+                          className="absolute inset-0 w-full h-full object-cover transition-opacity duration-300"
+                          style={{ opacity: hoveredProject === project.id ? 1 : 0 }}
+                          src={`${project.videoUrl}?autoplay=${hoveredProject === project.id ? 1 : 0}&mute=1&loop=1&controls=0&showinfo=0&rel=0&modestbranding=1`}
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                          allowFullScreen
+                        />
+                      ) : (
+                        <video
+                          id={`video-${project.id}`}
+                          className="absolute inset-0 w-full h-full object-cover transition-opacity duration-300"
+                          style={{ opacity: hoveredProject === project.id ? 1 : 0 }}
+                          muted
+                          loop
+                          playsInline
+                        >
+                          <source src={project.videoUrl} type="video/mp4" />
+                        </video>
+                      )}
 
                       {/* Overlay with project info */}
                       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -448,18 +450,9 @@ export default function Home() {
                         className="group relative aspect-[9/16] overflow-hidden rounded-lg bg-black/50"
                         onMouseEnter={() => {
                           setHoveredProject(project.id);
-                          const video = document.getElementById(`video-${project.id}`) as HTMLVideoElement;
-                          if (video) {
-                            video.play();
-                          }
                         }}
                         onMouseLeave={() => {
                           setHoveredProject(null);
-                          const video = document.getElementById(`video-${project.id}`) as HTMLVideoElement;
-                          if (video) {
-                            video.pause();
-                            video.currentTime = 0;
-                          }
                         }}
                         onClick={() => {
                           if (project.externalLink) {
@@ -477,16 +470,27 @@ export default function Home() {
                         />
                         
                         {/* Video - Only plays on hover */}
-                        <video
-                          id={`video-${project.id}`}
-                          className="absolute inset-0 w-full h-full object-cover transition-opacity duration-300"
-                          style={{ opacity: hoveredProject === project.id ? 1 : 0 }}
-                          muted
-                          loop
-                          playsInline
-                        >
-                          <source src={project.videoUrl} type="video/mp4" />
-                        </video>
+                        {project.videoUrl.startsWith('https://www.youtube.com/embed/') ? (
+                          <iframe
+                            id={`video-${project.id}`}
+                            className="absolute inset-0 w-full h-full object-cover transition-opacity duration-300"
+                            style={{ opacity: hoveredProject === project.id ? 1 : 0 }}
+                            src={`${project.videoUrl}?autoplay=${hoveredProject === project.id ? 1 : 0}&mute=1&loop=1&controls=0&showinfo=0&rel=0&modestbranding=1`}
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowFullScreen
+                          />
+                        ) : (
+                          <video
+                            id={`video-${project.id}`}
+                            className="absolute inset-0 w-full h-full object-cover transition-opacity duration-300"
+                            style={{ opacity: hoveredProject === project.id ? 1 : 0 }}
+                            muted
+                            loop
+                            playsInline
+                          >
+                            <source src={project.videoUrl} type="video/mp4" />
+                          </video>
+                        )}
 
                         {/* Overlay with project info */}
                         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
