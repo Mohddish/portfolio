@@ -122,22 +122,22 @@ export default function Home() {
     {
       id: 7,
       title: "Practise, Productive, Procastination",
-      description: "A journey through productivity and creative process",
-      videoUrl: "https://www.youtube.com/embed/DpjH_6cg4DE?autoplay=1&mute=1&loop=1&playlist=DpjH_6cg4DE&controls=0&showinfo=0&rel=0&modestbranding=1",
+      description: "",
+      videoUrl: "/videos/social1.mp4",
       thumbnail: "/thumbnails/social1.1-thumb.png",
       category: "social",
       aspectRatio: "9:16",
-      externalLink: "https://youtube.com/shorts/DpjH_6cg4DE"
+      externalLink: "https://www.instagram.com/p/DFs1tpJyBoy/"
     },
     {
       id: 8,
       title: "Artistic Stagnation",
-      description: "A visual exploration of creative blocks and artistic growth",
-      videoUrl: "https://www.youtube.com/embed/rGfln7ldJCs?autoplay=1&mute=1&loop=1&playlist=rGfln7ldJCs&controls=0&showinfo=0&rel=0&modestbranding=1",
+      description: "",
+      videoUrl: "/videos/social2.mp4",
       thumbnail: "/thumbnails/social2-thumb1.png",
       category: "social",
       aspectRatio: "9:16",
-      externalLink: "https://youtube.com/shorts/rGfln7ldJCs"
+      externalLink: "https://www.instagram.com/p/DEx7n0XzsRH/"
     },
     {
       id: 9,
@@ -152,12 +152,12 @@ export default function Home() {
     {
       id: 10,
       title: "Easy Wins",
-      description: "A motivational short about achieving small victories",
-      videoUrl: "https://www.youtube.com/embed/rrNZxcP58uo?autoplay=1&mute=1&loop=1&playlist=rrNZxcP58uo&controls=0&showinfo=0&rel=0&modestbranding=1",
+      description: "",
+      videoUrl: "/videos/social4.mp4",
       thumbnail: "/thumbnails/social4-thumb.png",
       category: "social",
       aspectRatio: "9:16",
-      externalLink: "https://youtube.com/shorts/rrNZxcP58uo"
+      externalLink: "https://www.instagram.com/p/DJTeFusypYv/"
     }
   ];
 
