@@ -37,7 +37,6 @@ next-env.d.ts
 
 # Large media files
 public/videos/
-*.mp4
 *.mov
 *.avi
 *.mkv
@@ -58,3 +57,13 @@ public/videos/
 *.7z
 *.tar
 *.gz
+
+# Ignore all MP4 files except showreel.mp4
+*.mp4
+!public/showreel.mp4
+
+# Ignore all GIF files except grains.gif
+*.gif
+!public/grains.gif
+
+.vercel
