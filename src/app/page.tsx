@@ -16,6 +16,7 @@ interface Project {
   thumbnail: string;
   category: string;
   aspectRatio: string;
+  externalLink?: string;
 }
 
 interface Brand {
@@ -65,7 +66,8 @@ export default function Home() {
       videoUrl: "/videos/project1.mp4",
       thumbnail: "/thumbnails/project1-thumb.png",
       category: "cinematography",
-      aspectRatio: "16:9"
+      aspectRatio: "16:9",
+      externalLink: "https://www.instagram.com/p/DAMCNCjSjG5/"
     },
     {
       id: 2,
@@ -74,7 +76,8 @@ export default function Home() {
       videoUrl: "/videos/project2.mp4",
       thumbnail: "/thumbnails/project2-thumb.jpg",
       category: "directing",
-      aspectRatio: "16:9"
+      aspectRatio: "16:9",
+      externalLink: "https://www.youtube.com/watch?v=4XjXxwjWQWA"
     },
     {
       id: 3,
@@ -83,7 +86,8 @@ export default function Home() {
       videoUrl: "/videos/project3.mp4",
       thumbnail: "/thumbnails/project3-thumb.png",
       category: "editing",
-      aspectRatio: "16:9"
+      aspectRatio: "16:9",
+      externalLink: "https://www.instagram.com/p/Cu4t-88NK7C/"
     },
     {
       id: 4,
@@ -92,7 +96,8 @@ export default function Home() {
       videoUrl: "/videos/project4.mp4",
       thumbnail: "/thumbnails/project4-thumb.png",
       category: "cinematography",
-      aspectRatio: "16:9"
+      aspectRatio: "16:9",
+      externalLink: "https://www.instagram.com/p/DBUQCXFBPHv/"
     },
     {
       id: 5,
@@ -101,7 +106,8 @@ export default function Home() {
       videoUrl: "/videos/project5.mp4",
       thumbnail: "/thumbnails/project5-thumb.png",
       category: "directing",
-      aspectRatio: "16:9"
+      aspectRatio: "16:9",
+      externalLink: "https://www.instagram.com/p/C_ArIwOvBYE/"
     },
     {
       id: 6,
@@ -110,7 +116,8 @@ export default function Home() {
       videoUrl: "/videos/project6.mp4",
       thumbnail: "/thumbnails/project6-thumb.png",
       category: "editing",
-      aspectRatio: "16:9"
+      aspectRatio: "16:9",
+      externalLink: "https://youtu.be/LG68gvAHPIU"
     },
     {
       id: 7,
@@ -119,7 +126,8 @@ export default function Home() {
       videoUrl: "/videos/social1.mp4",
       thumbnail: "/thumbnails/social1.1-thumb.png",
       category: "social",
-      aspectRatio: "9:16"
+      aspectRatio: "9:16",
+      externalLink: "https://www.instagram.com/p/DFs1tpJyBoy/"
     },
     {
       id: 8,
@@ -128,7 +136,8 @@ export default function Home() {
       videoUrl: "/videos/social2.mp4",
       thumbnail: "/thumbnails/social2-thumb1.png",
       category: "social",
-      aspectRatio: "9:16"
+      aspectRatio: "9:16",
+      externalLink: "https://www.instagram.com/p/DEx7n0XzsRH/"
     },
     {
       id: 9,
@@ -137,7 +146,8 @@ export default function Home() {
       videoUrl: "/videos/social3.mp4",
       thumbnail: "/thumbnails/social3-thumb.png",
       category: "social",
-      aspectRatio: "9:16"
+      aspectRatio: "9:16",
+      externalLink: "https://www.instagram.com/p/DH0XOUEyJe7/"
     },
     {
       id: 10,
@@ -146,7 +156,8 @@ export default function Home() {
       videoUrl: "/videos/social4.mp4",
       thumbnail: "/thumbnails/social4-thumb.png",
       category: "social",
-      aspectRatio: "9:16"
+      aspectRatio: "9:16",
+      externalLink: "https://www.instagram.com/p/DJTeFusypYv/"
     }
   ];
 
@@ -383,6 +394,12 @@ export default function Home() {
                           video.currentTime = 0;
                         }
                       }}
+                      onClick={() => {
+                        if (project.externalLink) {
+                          window.open(project.externalLink, '_blank');
+                        }
+                      }}
+                      style={{ cursor: project.externalLink ? 'pointer' : 'default' }}
                     >
                       {/* Thumbnail Image */}
                       <img
@@ -444,6 +461,12 @@ export default function Home() {
                             video.currentTime = 0;
                           }
                         }}
+                        onClick={() => {
+                          if (project.externalLink) {
+                            window.open(project.externalLink, '_blank');
+                          }
+                        }}
+                        style={{ cursor: project.externalLink ? 'pointer' : 'default' }}
                       >
                         {/* Thumbnail Image */}
                         <img

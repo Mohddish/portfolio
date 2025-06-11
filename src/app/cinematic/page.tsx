@@ -13,6 +13,7 @@ interface Project {
   thumbnail: string;
   category: string;
   aspectRatio: string;
+  externalLink?: string;
 }
 
 export default function CinematicPage() {
@@ -26,7 +27,8 @@ export default function CinematicPage() {
       videoUrl: "/videos/project1.mp4",
       thumbnail: "/thumbnails/project1-thumb.png",
       category: "cinematography",
-      aspectRatio: "16:9"
+      aspectRatio: "16:9",
+      externalLink: "https://www.instagram.com/p/DAMCNCjSjG5/"
     },
     {
       id: 2,
@@ -35,7 +37,8 @@ export default function CinematicPage() {
       videoUrl: "/videos/project2.mp4",
       thumbnail: "/thumbnails/project2-thumb.jpg",
       category: "directing",
-      aspectRatio: "16:9"
+      aspectRatio: "16:9",
+      externalLink: "https://www.youtube.com/watch?v=4XjXxwjWQWA"
     },
     {
       id: 3,
@@ -44,7 +47,8 @@ export default function CinematicPage() {
       videoUrl: "/videos/project3.mp4",
       thumbnail: "/thumbnails/project3-thumb.png",
       category: "editing",
-      aspectRatio: "16:9"
+      aspectRatio: "16:9",
+      externalLink: "https://www.instagram.com/p/Cu4t-88NK7C/"
     },
     {
       id: 4,
@@ -53,7 +57,8 @@ export default function CinematicPage() {
       videoUrl: "/videos/project4.mp4",
       thumbnail: "/thumbnails/project4-thumb.png",
       category: "cinematography",
-      aspectRatio: "16:9"
+      aspectRatio: "16:9",
+      externalLink: "https://www.instagram.com/p/DBUQCXFBPHv/"
     },
     {
       id: 5,
@@ -62,7 +67,8 @@ export default function CinematicPage() {
       videoUrl: "/videos/project5.mp4",
       thumbnail: "/thumbnails/project5-thumb.png",
       category: "directing",
-      aspectRatio: "16:9"
+      aspectRatio: "16:9",
+      externalLink: "https://www.instagram.com/p/C_ArIwOvBYE/"
     },
     {
       id: 6,
@@ -71,7 +77,8 @@ export default function CinematicPage() {
       videoUrl: "/videos/project6.mp4",
       thumbnail: "/thumbnails/project6-thumb.png",
       category: "editing",
-      aspectRatio: "16:9"
+      aspectRatio: "16:9",
+      externalLink: "https://youtu.be/LG68gvAHPIU"
     }
   ];
 
@@ -144,6 +151,12 @@ export default function CinematicPage() {
                         video.currentTime = 0;
                       }
                     }}
+                    onClick={() => {
+                      if (project.externalLink) {
+                        window.open(project.externalLink, '_blank');
+                      }
+                    }}
+                    style={{ cursor: project.externalLink ? 'pointer' : 'default' }}
                   >
                     {/* Thumbnail Image */}
                     <img
