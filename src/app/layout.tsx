@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Plus_Jakarta_Sans } from "next/font/google";
+import { Analytics } from '@vercel/analytics/react';
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -27,7 +28,10 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className={`font-sans ${jakarta.variable}`}>{children}</body>
+      <body className={`font-sans ${jakarta.variable}`}>
+        {children}
+        <Analytics />
+      </body>
     </html>
   );
 }
