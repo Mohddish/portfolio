@@ -11,8 +11,8 @@ const jakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Portfolio | Video Editor & Filmmaker",
-  description: "Professional video editor and filmmaker portfolio showcasing creative work and services.",
+  title: "FIlms and Freelance",
+  description: "Freelance creator, artist, filmmaker and creative.",
 };
 
 export default function RootLayout({
